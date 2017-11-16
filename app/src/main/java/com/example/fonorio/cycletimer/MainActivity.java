@@ -6,8 +6,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.Timer;
+import java.util.TimerTask;
 
+public class MainActivity extends AppCompatActivity {
+    Timer timer = new Timer();
+    TimerTask timerTask = new TimerTask(){
+        @Override
+        public void run() {
+            System.out.println("timer task " + timerTask.toString() + " has completed.");
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,5 +27,6 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("mainButton clicked");
             vibrator.vibrate(500);
         });
+        timer.schedule(timerTask, 0, 3000);
     }
 }
