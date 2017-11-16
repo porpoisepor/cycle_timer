@@ -18,7 +18,10 @@ public class MainActivity extends AppCompatActivity {
             }
         };
     }
-    Timer timer = new Timer();
+    Timer timer;
+    long period = 1000;
+    long startingDelay = 0;
+    boolean started = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +29,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button mainButton = (Button) findViewById(R.id.mainButton);
         Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
         mainButton.setOnClickListener((v)->{
-            System.out.println("mainButton clicked");
-            vibrator.vibrate(500);
+            Button button = (Button) v;
+            if(!started){
+                started = true;
+                timer = new Timer();
+                timer.schedule(wrapLambda(() -> {
+                    System.out.println("Lambda task ran.");
+                    vibrator.vibrate(100);
+                }), startingDelay, period);
+                button.setBackgroundColor(R.color.initialButtonColor);
+                button.setText(R.string.initialButtonText);
+            } else {
+                started = false;
+                button.setBackgroundColor(R.color.secondaryStateButtonColor);
+                button.setText(R.string.secondaryStateButtonText);
+                timer.cancel();
+                timer = null;
+            }
         });
-        timer.schedule(wrapLambda(() -> {System.out.println("Lambda task ran.");}), 0, 3000);
     }
 }

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">CycleTimer</string>
-    <string name="mainButtonText">TestButton</string>
+    <string name="initialButtonText">Start</string>
+    <string name="secondaryStateButtonText">Stop</string>
 </resources>
