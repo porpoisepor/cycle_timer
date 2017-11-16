@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CycleTimer</string>
+    <string name="mainButtonText">TestButton</string>
 </resources>

@@ -11,9 +11,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <Button
+            android:id="@+id/mainButton"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:text="testButton"/>
+            android:text="@string/mainButtonText"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
