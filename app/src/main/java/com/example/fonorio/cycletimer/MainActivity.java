@@ -6,6 +6,7 @@ import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         };
     }
     private Timer timer;
-    private long period = 1000;
+    private long period = 600; // crashes //Integer.parseInt(getString(R.string.startingNumberOfSeconds));
     private long startingDelay = 0;
     private boolean started;
     public final String sharedPreferencesFilename = "cycleTimerPreferences";
@@ -53,11 +54,13 @@ public class MainActivity extends AppCompatActivity {
     private void startTask(Button button) {
         started = true;
         timer = new Timer();
+        EditText numberInput = findViewById(R.id.numberInput);
+        period = Integer.parseInt(numberInput.getText().toString());
         timer.schedule(wrapLambda(() -> {
             System.out.println("Lambda task ran.");
             Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vibrator.vibrate(100);
-        }), startingDelay, period);
+        }), startingDelay, period*1000);
         updateButton(button);
     }
 

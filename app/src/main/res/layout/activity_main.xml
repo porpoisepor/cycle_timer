@@ -11,6 +11,16 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/inputDescriberText"/>
+        <EditText
+            android:id="@+id/numberInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="@string/startingNumberOfSeconds"/>
         <Button
             android:id="@+id/mainButton"
             android:layout_height="wrap_content"

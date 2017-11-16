@@ -2,4 +2,6 @@
     <string name="app_name">CycleTimer</string>
     <string name="initialButtonText">Start</string>
     <string name="secondaryStateButtonText">Stop</string>
+    <string name="inputDescriberText">Time period in seconds:</string>
+    <string name="startingNumberOfSeconds">600</string>
 </resources>
