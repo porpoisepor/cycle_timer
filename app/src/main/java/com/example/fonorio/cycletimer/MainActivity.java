@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private long startingDelay = 0;
     private boolean started;
     public final String sharedPreferencesFilename = "cycleTimerPreferences";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("onCreate finished");
         System.out.println("started: " + started);
     }
-
     private void startTask(Button button) {
         started = true;
         timer = new Timer();
@@ -63,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
         }), startingDelay, period*1000);
         updateButton(button);
     }
-
     private void stopTask(Button button) {
         started = false;
         if(timer != null){
@@ -72,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
         }
         updateButton(button);
     }
-
     private void updateButton(Button button){
         if(!started){
             button.setBackgroundResource(R.drawable.rounded_background);
@@ -92,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
         stopTask((Button) findViewById(R.id.mainButton));
         System.out.println("onDestroy called");
     }
-
     @Override
     protected void onPause() {
         super.onPause();
@@ -105,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("onPause called");
         System.out.println("started: " + started);
     }
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -117,33 +111,28 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("onResume called");
         System.out.println("started: " + started);
     }
-
     @Override
     protected void onStop() {
         super.onStop();
 
         System.out.println("onStop called");
     }
-
     @Override
     protected void onRestart() {
         super.onRestart();
         System.out.println("onRestart called");
     }
-
     @Override
     protected void onStart() {
         super.onStart();
         System.out.println("onStart called");
     }
-
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 //        outState.putBoolean("hasStarted", started);
         System.out.println("onSaveInstanceState called");
     }
-
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);

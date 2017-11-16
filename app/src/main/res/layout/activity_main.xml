@@ -14,13 +14,23 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/inputDescriberText"/>
+            android:text="@string/inputDescriberText"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            />
         <EditText
             android:id="@+id/numberInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:text="@string/startingNumberOfSeconds"/>
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:textSize="60sp"
+            android:text="@string/startingNumberOfSeconds"
+            android:background="@android:drawable/editbox_background"
+            android:layout_margin="20dp"
+            />
         <Button
             android:id="@+id/mainButton"
             android:layout_height="wrap_content"
@@ -32,6 +42,11 @@
             android:textStyle="bold"
             android:padding="20dp"
             android:textSize="20sp"
+            android:shadowColor="@color/text_shadow"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="5"
+
             />
     </LinearLayout>
 

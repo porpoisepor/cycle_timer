@@ -6,4 +6,6 @@
     <color name="initialButtonColor">#0F0</color>
     <color name="secondaryStateButtonColor">#F00</color>
     <color name="buttonTextColor">#FFF</color>
+    <color name="text_shadow">#7F000000</color>
+    <color name="text_shadow_white">#FFFFFF</color>
 </resources>
