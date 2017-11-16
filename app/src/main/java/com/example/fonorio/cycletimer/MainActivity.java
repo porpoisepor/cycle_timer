@@ -10,13 +10,16 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
+    private static TimerTask wrapLambda(Runnable runnable){
+        return new TimerTask(){
+            @Override
+            public void run() {
+                runnable.run();
+            }
+        };
+    }
     Timer timer = new Timer();
-    TimerTask timerTask = new TimerTask(){
-        @Override
-        public void run() {
-            System.out.println("timer task " + timerTask.toString() + " has completed.");
-        }
-    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +30,6 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("mainButton clicked");
             vibrator.vibrate(500);
         });
-        timer.schedule(timerTask, 0, 3000);
+        timer.schedule(wrapLambda(() -> {System.out.println("Lambda task ran.");}), 0, 3000);
     }
 }
