@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("onCreate started");
-        System.out.println("started: " + started);
+        // System.out.println("onCreate started");
+        // System.out.println("started: " + started);
         setContentView(R.layout.activity_main);
 
         SharedPreferences sharedPreferences = getSharedPreferences(sharedPreferencesFilename, MODE_PRIVATE);
@@ -38,16 +38,16 @@ public class MainActivity extends AppCompatActivity {
         updateButton(mainButton);
         mainButton.setOnClickListener((v)->{
             Button button = (Button) v;
-            System.out.println("Button has been clicked.");
+            // System.out.println("Button has been clicked.");
             if(!started){
                 startTask(button);
             } else {
                 stopTask(button);
             }
-            System.out.println("started: " + started);
+            // System.out.println("started: " + started);
         });
-        System.out.println("onCreate finished");
-        System.out.println("started: " + started);
+        // System.out.println("onCreate finished");
+        // System.out.println("started: " + started);
     }
     private void startTask(Button button) {
         started = true;
@@ -55,9 +55,10 @@ public class MainActivity extends AppCompatActivity {
         EditText numberInput = findViewById(R.id.numberInput);
         period = Integer.parseInt(numberInput.getText().toString());
         timer.schedule(wrapLambda(() -> {
-            System.out.println("Lambda task ran.");
+            // System.out.println("Lambda task ran.");
             Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            vibrator.vibrate(100);
+//            vibrator.vibrate(100);
+            vibrator.vibrate(new long[]{0,300,1000,300,1000,300,1000,300,1000,300}, -1);
         }), startingDelay, period*1000);
         updateButton(button);
     }
@@ -86,57 +87,57 @@ public class MainActivity extends AppCompatActivity {
         editor.putBoolean("hasStarted", false);
         editor.commit();
         stopTask((Button) findViewById(R.id.mainButton));
-        System.out.println("onDestroy called");
+        // System.out.println("onDestroy called");
     }
     @Override
     protected void onPause() {
         super.onPause();
-        System.out.println("calling onPause");
-        System.out.println("started: " + started);
+        // System.out.println("calling onPause");
+        // System.out.println("started: " + started);
         SharedPreferences sharedPreferences = getSharedPreferences(sharedPreferencesFilename, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("hasStarted", started);
         editor.commit();
-        System.out.println("onPause called");
-        System.out.println("started: " + started);
+        // System.out.println("onPause called");
+        // System.out.println("started: " + started);
     }
     @Override
     protected void onResume() {
         super.onResume();
-        System.out.println("calling onResume ");
-        System.out.println("started: " + started);
+        // System.out.println("calling onResume ");
+        // System.out.println("started: " + started);
         SharedPreferences sharedPreferences = getSharedPreferences(sharedPreferencesFilename, MODE_PRIVATE);
         started = sharedPreferences.getBoolean("hasStarted", false);
         updateButton(findViewById(R.id.mainButton));
-        System.out.println("onResume called");
-        System.out.println("started: " + started);
+        // System.out.println("onResume called");
+        // System.out.println("started: " + started);
     }
     @Override
     protected void onStop() {
         super.onStop();
 
-        System.out.println("onStop called");
+        // System.out.println("onStop called");
     }
     @Override
     protected void onRestart() {
         super.onRestart();
-        System.out.println("onRestart called");
+        // System.out.println("onRestart called");
     }
     @Override
     protected void onStart() {
         super.onStart();
-        System.out.println("onStart called");
+        // System.out.println("onStart called");
     }
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 //        outState.putBoolean("hasStarted", started);
-        System.out.println("onSaveInstanceState called");
+        // System.out.println("onSaveInstanceState called");
     }
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 //        started = savedInstanceState.getBoolean("hasStarted");
-        System.out.println("onRestoreInstanceState called");
+        // System.out.println("onRestoreInstanceState called");
     }
 }
