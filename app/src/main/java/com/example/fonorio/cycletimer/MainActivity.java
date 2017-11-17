@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
         timer.schedule(wrapLambda(() -> {
             // System.out.println("Lambda task ran.");
             Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-//            vibrator.vibrate(100);
             vibrator.vibrate(new long[]{0,300,1000,300,1000,300,1000,300,1000,300}, -1);
+//            vibrator.vibrate(1*60*1000);
         }), startingDelay, period*1000);
         updateButton(button);
     }
